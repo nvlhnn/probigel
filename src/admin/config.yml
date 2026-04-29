@@ -160,16 +160,13 @@ collections:
         hint: "Angka kecil = tampil lebih atas"
 
   # ═══════════════════════════════════════════════════════════
-  # PENGATURAN & DATA (File Collection — JSON files)
+  # PENGATURAN SITUS (File Collection)
   # ═══════════════════════════════════════════════════════════
-  - name: "settings"
-    label: "⚙️ Pengaturan & Data"
-    description: "Kelola pengaturan situs, produk, testimoni, dan data lainnya"
+  - name: "site_settings"
+    label: "🌐 Pengaturan Situs"
     files:
-
-      # ─── Pengaturan Situs ──────────────────────────────────
       - name: "site"
-        label: "🌐 Pengaturan Situs"
+        label: "Pengaturan Situs"
         file: "src/_data/site.json"
         description: "Pengaturan umum, kontak, dan SEO"
         fields:
@@ -232,9 +229,14 @@ collections:
               - { label: "OG Image (1200×630)", name: "og_image", widget: "image", required: false }
               - { label: "Keywords", name: "keywords", widget: "string", required: false, hint: "Comma-separated keywords" }
 
-      # ─── Produk ─────────────────────────────────────────────
+  # ═══════════════════════════════════════════════════════════
+  # PRODUK (File Collection)
+  # ═══════════════════════════════════════════════════════════
+  - name: "products"
+    label: "🛒 Produk"
+    files:
       - name: "products"
-        label: "🛒 Produk"
+        label: "Daftar Produk"
         file: "src/_data/products.json"
         description: "Kelola data produk — nama, harga, fitur, sertifikasi"
         fields:
@@ -287,9 +289,14 @@ collections:
                 label_singular: "Bahan"
                 field: { name: "ingredient", label: "Bahan", widget: "string" }
 
-      # ─── Testimoni ──────────────────────────────────────────
+  # ═══════════════════════════════════════════════════════════
+  # TESTIMONI (File Collection)
+  # ═══════════════════════════════════════════════════════════
+  - name: "testimonials"
+    label: "⭐ Testimoni"
+    files:
       - name: "testimonials"
-        label: "⭐ Testimoni"
+        label: "Daftar Testimoni"
         file: "src/_data/testimonials.json"
         description: "Kelola testimoni pengguna — nama, review, rating"
         fields:
@@ -309,9 +316,14 @@ collections:
               - { label: "Produk", name: "product", widget: "string", required: false, hint: "Nama produk yang direview" }
               - { label: "Tanggal", name: "date", widget: "datetime", required: false, format: "YYYY-MM-DD" }
 
-      # ─── Jenis Luka ─────────────────────────────────────────
+  # ═══════════════════════════════════════════════════════════
+  # JENIS LUKA (File Collection)
+  # ═══════════════════════════════════════════════════════════
+  - name: "wounds"
+    label: "🩹 Jenis Luka"
+    files:
       - name: "wounds"
-        label: "🩹 Jenis Luka"
+        label: "Daftar Jenis Luka"
         file: "src/_data/wounds.json"
         description: "Kelola jenis luka yang ditampilkan di landing page"
         fields:
@@ -334,9 +346,14 @@ collections:
                   - { label: "Sedang", value: "sedang" }
                   - { label: "Berat", value: "berat" }
 
-      # ─── Pengaturan Formulir ─────────────────────────────────
+  # ═══════════════════════════════════════════════════════════
+  # PENGATURAN FORMULIR (File Collection)
+  # ═══════════════════════════════════════════════════════════
+  - name: "form_options"
+    label: "📋 Formulir Konsultasi"
+    files:
       - name: "form_options"
-        label: "📋 Pengaturan Formulir"
+        label: "Pilihan Formulir"
         file: "src/_data/formOptions.json"
         description: "Kelola pilihan dropdown pada formulir konsultasi"
         fields:

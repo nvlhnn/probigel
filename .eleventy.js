@@ -25,6 +25,13 @@ module.exports = function (eleventyConfig) {
     return "★".repeat(n) + "☆".repeat(5 - n);
   });
 
+  // Sort FAQ by order
+  eleventyConfig.addCollection("faqSorted", function(collectionApi) {
+    return collectionApi.getFilteredByTag("faq").sort((a, b) => {
+      return (a.data.order || 100) - (b.data.order || 100);
+    });
+  });
+
   return {
     dir: {
       input: "src",

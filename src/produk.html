@@ -87,30 +87,14 @@ description: "Probiogel Hydrogel Antiseptic — Antiseptik spray gel modern terd
     <div class="text-[11px] font-bold text-teal tracking-widest uppercase mb-2.5">Pertanyaan Umum</div>
     <h2 class="font-serif text-xl md:text-2xl leading-tight text-dark mb-3">Yang sering ditanyakan</h2>
     <div class="faq-list mt-8 flex flex-col gap-2.5">
-      <div class="faq-item bg-white rounded-xl border border-black/7 overflow-hidden open">
+      {% for faq in collections.faqSorted %}
+      <div class="faq-item bg-white rounded-xl border border-black/7 overflow-hidden {% if loop.first %}open{% endif %}">
         <button class="faq-q w-full text-left px-5 py-4 text-sm font-semibold text-dark flex justify-between items-center cursor-pointer hover:text-teal bg-transparent border-0 font-sans">
-          Apakah Probiogel aman untuk luka diabetes? <span class="faq-arrow text-teal text-base">▾</span>
+          {{ faq.data.question }} <span class="faq-arrow text-teal text-base">▾</span>
         </button>
-        <div class="faq-a px-5 text-[13px] text-gray-body leading-relaxed">Ya, Probiogel dapat membantu menjaga luka diabetes tetap bersih dan mendukung proses healing. Namun untuk luka diabetes yang parah atau sudah mengalami komplikasi serius, tetap diperlukan penanganan dari tenaga medis profesional.</div>
+        <div class="faq-a px-5 text-[13px] text-gray-body leading-relaxed prose prose-sm prose-teal max-w-none">{{ faq.templateContent | safe }}</div>
       </div>
-      <div class="faq-item bg-white rounded-xl border border-black/7 overflow-hidden">
-        <button class="faq-q w-full text-left px-5 py-4 text-sm font-semibold text-dark flex justify-between items-center cursor-pointer hover:text-teal bg-transparent border-0 font-sans">
-          Boleh dipakai untuk luka pasca operasi / SC? <span class="faq-arrow text-teal text-base">▾</span>
-        </button>
-        <div class="faq-a px-5 text-[13px] text-gray-body leading-relaxed">Probiogel dapat membantu menjaga kebersihan luka pasca operasi ringan. Disarankan untuk mengikuti anjuran dokter terlebih dahulu dan menggunakan Probiogel sebagai pendukung perawatan sehari-hari.</div>
-      </div>
-      <div class="faq-item bg-white rounded-xl border border-black/7 overflow-hidden">
-        <button class="faq-q w-full text-left px-5 py-4 text-sm font-semibold text-dark flex justify-between items-center cursor-pointer hover:text-teal bg-transparent border-0 font-sans">
-          Berapa kali sehari penggunaannya? <span class="faq-arrow text-teal text-base">▾</span>
-        </button>
-        <div class="faq-a px-5 text-[13px] text-gray-body leading-relaxed">3 kali sehari atau sesuai kebutuhan. Semprotkan 3–5 kali pada area luka setiap penggunaan. Produk baik digunakan maksimal 6 bulan setelah dibuka.</div>
-      </div>
-      <div class="faq-item bg-white rounded-xl border border-black/7 overflow-hidden">
-        <button class="faq-q w-full text-left px-5 py-4 text-sm font-semibold text-dark flex justify-between items-center cursor-pointer hover:text-teal bg-transparent border-0 font-sans">
-          Kenapa HOCl lebih baik dari alkohol untuk luka? <span class="faq-arrow text-teal text-base">▾</span>
-        </button>
-        <div class="faq-a px-5 text-[13px] text-gray-body leading-relaxed">Alkohol bersifat iritatif dan dapat merusak jaringan sehat di sekitar luka sehingga justru memperlambat penyembuhan. HOCl sebaliknya — membunuh kuman secara efektif (99,999%) tanpa merusak jaringan sehat.</div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
