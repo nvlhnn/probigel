@@ -42,7 +42,7 @@ collections:
   - name: "articles"
     label: "📝 Artikel"
     label_singular: "Artikel"
-    folder: "src/artikel"
+    folder: "src/content/articles"
     create: true
     delete: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
@@ -102,7 +102,7 @@ collections:
         widget: "image"
         required: false
         hint: "Gambar hero/thumbnail (rasio 16:9 disarankan)"
-        media_folder: "/src/images/uploads/articles"
+        media_folder: "src/images/uploads/articles"
         public_folder: "/images/uploads/articles"
 
       - label: "Penulis"
@@ -128,7 +128,7 @@ collections:
   - name: "faq"
     label: "❓ FAQ"
     label_singular: "FAQ"
-    folder: "src/faq"
+    folder: "src/content/faq"
     create: true
     delete: true
     slug: "{{slug}}"
@@ -230,121 +230,115 @@ collections:
               - { label: "Keywords", name: "keywords", widget: "string", required: false, hint: "Comma-separated keywords" }
 
   # ═══════════════════════════════════════════════════════════
-  # PRODUK (File Collection)
+  # PRODUK (Folder Collection)
   # ═══════════════════════════════════════════════════════════
   - name: "products"
     label: "🛒 Produk"
-    files:
-      - name: "products"
-        label: "Daftar Produk"
-        file: "src/_data/products.json"
-        description: "Kelola data produk — nama, harga, fitur, sertifikasi"
-        fields:
-          - name: "items"
-            label: "Daftar Produk"
-            widget: "list"
-            summary: "{{fields.name}} — {{fields.price}}"
-            label_singular: "Produk"
-            fields:
-              - { label: "Nama Produk", name: "name", widget: "string" }
-              - { label: "Subtitle", name: "subtitle", widget: "string" }
-              - { label: "Deskripsi", name: "description", widget: "text" }
-              - { label: "Harga", name: "price", widget: "string", hint: "Contoh: Rp 125.000" }
-              - { label: "Ukuran", name: "size", widget: "string" }
-              - label: "Foto Produk"
-                name: "image"
-                widget: "image"
-                required: false
-                media_folder: "/src/images/uploads/products"
-                public_folder: "/images/uploads/products"
-              - label: "Badge / Label"
-                name: "badge"
-                widget: "string"
-                required: false
-                hint: "Contoh: Best Seller, Baru, Promo"
-              - label: "Produk Unggulan?"
-                name: "is_popular"
-                widget: "boolean"
-                default: false
-                hint: "Tandai sebagai produk yang di-highlight"
-              - label: "Link Pembelian"
-                name: "buy_url"
-                widget: "string"
-                required: false
-                hint: "Link Shopee / Tokopedia / dll"
-              - name: "features"
-                label: "Fitur Utama"
-                widget: "list"
-                label_singular: "Fitur"
-                field: { name: "feature", label: "Fitur", widget: "string" }
-              - name: "certifications"
-                label: "Sertifikasi"
-                widget: "list"
-                label_singular: "Sertifikasi"
-                field: { name: "cert", label: "Sertifikasi", widget: "string" }
-              - name: "ingredients"
-                label: "Komposisi"
-                widget: "list"
-                required: false
-                label_singular: "Bahan"
-                field: { name: "ingredient", label: "Bahan", widget: "string" }
+    label_singular: "Produk"
+    folder: "src/content/products"
+    create: true
+    format: "json"
+    extension: "json"
+    slug: "{{slug}}"
+    sortable_fields: ["order", "name"]
+    summary: "{{name}} — {{price}}"
+    fields:
+      - { label: "Urutan", name: "order", widget: "number", default: 100, hint: "Angka kecil = tampil lebih atas" }
+      - { label: "Nama Produk", name: "name", widget: "string" }
+      - { label: "Subtitle", name: "subtitle", widget: "string" }
+      - { label: "Deskripsi", name: "description", widget: "text" }
+      - { label: "Harga", name: "price", widget: "string", hint: "Contoh: Rp 125.000" }
+      - { label: "Ukuran", name: "size", widget: "string" }
+      - label: "Foto Produk"
+        name: "image"
+        widget: "image"
+        required: false
+        media_folder: "src/images/uploads/products"
+        public_folder: "/images/uploads/products"
+      - label: "Badge / Label"
+        name: "badge"
+        widget: "string"
+        required: false
+        hint: "Contoh: Best Seller, Baru, Promo"
+      - label: "Produk Unggulan?"
+        name: "is_popular"
+        widget: "boolean"
+        default: false
+        hint: "Tandai sebagai produk yang di-highlight"
+      - label: "Link Pembelian"
+        name: "buy_url"
+        widget: "string"
+        required: false
+        hint: "Link Shopee / Tokopedia / dll"
+      - name: "features"
+        label: "Fitur Utama"
+        widget: "list"
+        label_singular: "Fitur"
+        field: { name: "feature", label: "Fitur", widget: "string" }
+      - name: "certifications"
+        label: "Sertifikasi"
+        widget: "list"
+        label_singular: "Sertifikasi"
+        field: { name: "cert", label: "Sertifikasi", widget: "string" }
+      - name: "ingredients"
+        label: "Komposisi"
+        widget: "list"
+        required: false
+        label_singular: "Bahan"
+        field: { name: "ingredient", label: "Bahan", widget: "string" }
 
   # ═══════════════════════════════════════════════════════════
-  # TESTIMONI (File Collection)
+  # TESTIMONI (Folder Collection)
   # ═══════════════════════════════════════════════════════════
   - name: "testimonials"
     label: "⭐ Testimoni"
-    files:
-      - name: "testimonials"
-        label: "Daftar Testimoni"
-        file: "src/_data/testimonials.json"
-        description: "Kelola testimoni pengguna — nama, review, rating"
-        fields:
-          - name: "items"
-            label: "Daftar Testimoni"
-            widget: "list"
-            summary: "{{fields.name}} — ⭐{{fields.rating}}"
-            label_singular: "Testimoni"
-            fields:
-              - { label: "Nama", name: "name", widget: "string" }
-              - { label: "Inisial", name: "initials", widget: "string", hint: "2 huruf, contoh: RS" }
-              - { label: "Foto (opsional)", name: "image", widget: "image", required: false }
-              - { label: "Testimoni", name: "text", widget: "text" }
-              - { label: "Info (profesi, kota)", name: "meta", widget: "string" }
-              - { label: "Sumber", name: "source", widget: "select", options: ["via TikTok Comment", "via Instagram DM", "via Shopee Review", "via Tokopedia Review", "via WhatsApp", "via Google Review", "Langsung"] }
-              - { label: "Rating (1-5)", name: "rating", widget: "number", value_type: "int", min: 1, max: 5, default: 5 }
-              - { label: "Produk", name: "product", widget: "string", required: false, hint: "Nama produk yang direview" }
-              - { label: "Tanggal", name: "date", widget: "datetime", required: false, format: "YYYY-MM-DD" }
+    label_singular: "Testimoni"
+    folder: "src/content/testimonials"
+    create: true
+    format: "json"
+    extension: "json"
+    slug: "{{slug}}"
+    sortable_fields: ["order", "rating", "date"]
+    summary: "{{name}} — ⭐{{rating}}"
+    fields:
+      - { label: "Urutan", name: "order", widget: "number", default: 100, hint: "Angka kecil = tampil lebih atas" }
+      - { label: "Nama", name: "name", widget: "string" }
+      - { label: "Inisial", name: "initials", widget: "string", hint: "2 huruf, contoh: RS" }
+      - { label: "Foto (opsional)", name: "image", widget: "image", required: false }
+      - { label: "Testimoni", name: "text", widget: "text" }
+      - { label: "Info (profesi, kota)", name: "meta", widget: "string" }
+      - { label: "Sumber", name: "source", widget: "select", options: ["via TikTok Comment", "via Instagram DM", "via Shopee Review", "via Tokopedia Review", "via WhatsApp", "via Google Review", "Langsung"] }
+      - { label: "Rating (1-5)", name: "rating", widget: "number", value_type: "int", min: 1, max: 5, default: 5 }
+      - { label: "Produk", name: "product", widget: "string", required: false, hint: "Nama produk yang direview" }
+      - { label: "Tanggal", name: "date", widget: "datetime", required: false, format: "YYYY-MM-DD" }
 
   # ═══════════════════════════════════════════════════════════
-  # JENIS LUKA (File Collection)
+  # JENIS LUKA (Folder Collection)
   # ═══════════════════════════════════════════════════════════
   - name: "wounds"
     label: "🩹 Jenis Luka"
-    files:
-      - name: "wounds"
-        label: "Daftar Jenis Luka"
-        file: "src/_data/wounds.json"
-        description: "Kelola jenis luka yang ditampilkan di landing page"
-        fields:
-          - name: "items"
-            label: "Daftar Luka"
-            widget: "list"
-            summary: "{{fields.icon}} {{fields.name}}"
-            label_singular: "Jenis Luka"
-            fields:
-              - { label: "Nama Luka", name: "name", widget: "string" }
-              - { label: "Detail Singkat", name: "detail", widget: "string" }
-              - { label: "Deskripsi Lengkap", name: "description", widget: "text", required: false, hint: "Penjelasan lebih detail untuk halaman khusus" }
-              - { label: "Emoji Icon", name: "icon", widget: "string" }
-              - label: "Tingkat Keparahan"
-                name: "severity"
-                widget: "select"
-                required: false
-                options:
-                  - { label: "Ringan", value: "ringan" }
-                  - { label: "Sedang", value: "sedang" }
-                  - { label: "Berat", value: "berat" }
+    label_singular: "Jenis Luka"
+    folder: "src/content/wounds"
+    create: true
+    format: "json"
+    extension: "json"
+    slug: "{{slug}}"
+    sortable_fields: ["order", "name"]
+    summary: "{{icon}} {{name}}"
+    fields:
+      - { label: "Urutan", name: "order", widget: "number", default: 100, hint: "Angka kecil = tampil lebih atas" }
+      - { label: "Nama Luka", name: "name", widget: "string" }
+      - { label: "Detail Singkat", name: "detail", widget: "string" }
+      - { label: "Deskripsi Lengkap", name: "description", widget: "text", required: false, hint: "Penjelasan lebih detail untuk halaman khusus" }
+      - { label: "Emoji Icon", name: "icon", widget: "string" }
+      - label: "Tingkat Keparahan"
+        name: "severity"
+        widget: "select"
+        required: false
+        options:
+          - { label: "Ringan", value: "ringan" }
+          - { label: "Sedang", value: "sedang" }
+          - { label: "Berat", value: "berat" }
 
   # ═══════════════════════════════════════════════════════════
   # PENGATURAN FORMULIR (File Collection)

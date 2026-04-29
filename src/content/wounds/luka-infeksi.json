@@ -1,0 +1,8 @@
+{
+  "order": 4,
+  "name": "Luka Infeksi",
+  "detail": "& Terinfeksi",
+  "description": "Luka yang sudah menunjukkan tanda-tanda infeksi seperti kemerahan, bengkak, nanah, atau bau tidak sedap. HOCl efektif membunuh bakteri penyebab infeksi.",
+  "icon": "🦠",
+  "severity": "berat"
+}

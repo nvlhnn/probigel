@@ -9,7 +9,7 @@
     "build:css": "npx @tailwindcss/cli -i ./src/css/input.css -o ./_site/css/style.css --minify",
     "build:11ty": "npx @11ty/eleventy",
     "build": "npm run build:11ty && npm run build:css",
-    "clean": "rimraf _site"
+    "clean": "node -e \"require('fs').rmSync('_site',{recursive:true,force:true})\""
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",

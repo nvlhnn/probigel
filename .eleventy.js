@@ -1,3 +1,18 @@
+const fs = require("fs");
+const path = require("path");
+
+function readJsonFolder(folder) {
+  const fullPath = path.join(__dirname, "src", "content", folder);
+
+  return fs.readdirSync(fullPath)
+    .filter((file) => file.endsWith(".json"))
+    .map((file) => {
+      const filePath = path.join(fullPath, file);
+      return JSON.parse(fs.readFileSync(filePath, "utf8"));
+    })
+    .sort((a, b) => (a.order || 100) - (b.order || 100));
+}
+
 module.exports = function (eleventyConfig) {
   // Passthrough copy — don't copy css since Tailwind builds to _site/css
   eleventyConfig.addPassthroughCopy("src/js");
@@ -30,6 +45,18 @@ module.exports = function (eleventyConfig) {
     return collectionApi.getFilteredByTag("faq").sort((a, b) => {
       return (a.data.order || 100) - (b.data.order || 100);
     });
+  });
+
+  eleventyConfig.addGlobalData("cmsProducts", function() {
+    return readJsonFolder("products");
+  });
+
+  eleventyConfig.addGlobalData("cmsTestimonials", function() {
+    return readJsonFolder("testimonials");
+  });
+
+  eleventyConfig.addGlobalData("cmsWounds", function() {
+    return readJsonFolder("wounds");
   });
 
   return {

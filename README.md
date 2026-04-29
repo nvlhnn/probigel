@@ -18,9 +18,15 @@ This is the official landing page and product website for Probiogel, built as a 
 ├── netlify.toml       # Netlify deployment configuration
 ├── package.json       # Project dependencies and npm scripts
 ├── src/               # Main source code
-│   ├── _data/         # JSON data files (e.g., wounds.json, global content)
+│   ├── _data/         # Global singleton data (site settings, form options)
 │   ├── _includes/     # Layout templates and partials (header, footer, etc.)
 │   ├── admin/         # Decap CMS configuration (config.yml)
+│   ├── content/       # CMS-managed content collections
+│   │   ├── articles/      # Article markdown files and collection defaults
+│   │   ├── faq/           # FAQ markdown files and collection defaults
+│   │   ├── products/      # Product JSON entries
+│   │   ├── testimonials/  # Testimonial JSON entries
+│   │   └── wounds/        # Wound type JSON entries
 │   ├── css/           # CSS source files (input.css for Tailwind)
 │   ├── images/        # Static image assets
 │   ├── js/            # Client-side JavaScript

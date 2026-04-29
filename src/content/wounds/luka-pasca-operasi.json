@@ -1,0 +1,8 @@
+{
+  "order": 3,
+  "name": "Luka Pasca",
+  "detail": "Operasi",
+  "description": "Luka bekas operasi (insisi bedah) yang membutuhkan perawatan steril agar tidak terjadi infeksi dan sembuh dengan bekas luka minimal.",
+  "icon": "🏥",
+  "severity": "sedang"
+}
