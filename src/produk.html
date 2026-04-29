@@ -14,10 +14,10 @@ description: "Probiogel Hydrogel Antiseptic — Antiseptik spray gel modern terd
 
 {% set product = cmsProducts[0] %}
 <div class="max-w-6xl mx-auto px-5 md:px-10 -mt-1">
-  <div class="bg-white rounded-2xl p-6 md:p-9 flex flex-col md:flex-row gap-8 md:gap-10 items-start border border-teal/10 shadow-lg shadow-teal/5 fade-in">
+  <div class="bg-white rounded-2xl p-6 md:p-9 flex flex-col md:flex-row gap-8 md:gap-10 items-start border border-teal/10 shadow-lg shadow-teal/5 fade-in hover-lift">
     <!-- Visual -->
     <div class="w-full md:w-44 flex-shrink-0 text-center">
-      <div class="w-36 h-44 mx-auto mb-3.5 rounded-2xl flex items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, var(--color-teal-pale), #C8EDF5);">
+      <div class="w-36 h-44 mx-auto mb-3.5 rounded-2xl flex items-center justify-center overflow-hidden float-soft" style="background: linear-gradient(135deg, var(--color-teal-pale), #C8EDF5);">
         {% if product.image %}
         <img src="{{ product.image | imageUrl }}" alt="{{ product.name }}" class="w-full h-full object-contain p-3">
         {% else %}
@@ -36,18 +36,18 @@ description: "Probiogel Hydrogel Antiseptic — Antiseptik spray gel modern terd
     </div>
     <!-- Info -->
     <div class="flex-1">
-      <div class="text-2xl md:text-[26px] font-extrabold text-dark mb-1">{{ product.name }}</div>
+      <div class="text-xl md:text-2xl font-extrabold text-dark mb-1">{{ product.name }}</div>
       <div class="text-[13px] text-teal font-bold mb-3.5">{{ product.subtitle }}</div>
-      <div class="text-sm text-gray-body leading-relaxed mb-5">{{ product.description }}</div>
-      <div class="flex flex-col gap-2 mb-5">
+      <div class="text-[13px] text-gray-body leading-relaxed mb-4">{{ product.description }}</div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2 mb-4">
         {% for feat in product.features %}
-        <div class="flex items-center gap-2.5 text-[13px] font-medium text-dark">
-          <div class="w-[18px] h-[18px] bg-teal rounded-full flex items-center justify-center text-white text-[10px] shrink-0">✓</div>
+        <div class="flex items-start gap-2 text-xs font-medium text-dark leading-relaxed">
+          <div class="w-4 h-4 mt-0.5 bg-teal rounded-full flex items-center justify-center text-white text-[9px] shrink-0">✓</div>
           {{ feat }}
         </div>
         {% endfor %}
       </div>
-      <div class="text-3xl font-black text-dark mb-4">{{ product.price }} <small class="text-sm text-gray-body font-normal">/ {{ product.size }}</small></div>
+      <div class="text-2xl md:text-[26px] font-black text-dark mb-4">{{ product.price }} <small class="text-sm text-gray-body font-normal">/ {{ product.size }}</small></div>
       <div class="flex flex-wrap gap-2.5">
         {% if site.contact.shopee %}<a href="{{ site.contact.shopee }}" class="bg-[#EE4D2D] hover:bg-[#D44426] text-white px-5 py-2.5 rounded-full text-xs font-bold no-underline transition-colors" target="_blank" rel="noopener">🛍️ Shopee</a>{% endif %}
         {% if site.contact.tiktok %}<a href="{{ site.contact.tiktok }}" class="bg-dark hover:bg-dark/80 text-white px-5 py-2.5 rounded-full text-xs font-bold no-underline transition-colors" target="_blank" rel="noopener">🎵 TikTok Shop</a>{% endif %}
@@ -63,17 +63,17 @@ description: "Probiogel Hydrogel Antiseptic — Antiseptik spray gel modern terd
     <div class="text-[11px] font-bold text-teal tracking-widest uppercase mb-2.5">Cara Penggunaan</div>
     <h2 class="font-serif text-xl md:text-2xl leading-tight text-dark mb-3">Cara menggunakan Probiogel</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-      <div class="bg-teal-ultra border border-teal/12 rounded-2xl p-5 text-center">
+      <div class="bg-teal-ultra border border-teal/12 rounded-2xl p-5 text-center hover-lift">
         <div class="text-3xl mb-2.5">🚿</div>
         <div class="text-sm font-bold text-dark mb-1.5">1. Bersihkan Luka</div>
         <div class="text-xs text-gray-body leading-relaxed">Bersihkan area luka dari kotoran menggunakan air bersih atau cairan fisiologis.</div>
       </div>
-      <div class="bg-teal-ultra border border-teal/12 rounded-2xl p-5 text-center">
+      <div class="bg-teal-ultra border border-teal/12 rounded-2xl p-5 text-center hover-lift">
         <div class="text-3xl mb-2.5">💨</div>
         <div class="text-sm font-bold text-dark mb-1.5">2. Semprotkan Probiogel</div>
         <div class="text-xs text-gray-body leading-relaxed">Semprotkan 3–5 kali ke dasar luka secara merata. Rasakan sensasi adem, tidak perih sama sekali.</div>
       </div>
-      <div class="bg-teal-ultra border border-teal/12 rounded-2xl p-5 text-center">
+      <div class="bg-teal-ultra border border-teal/12 rounded-2xl p-5 text-center hover-lift">
         <div class="text-3xl mb-2.5">🩹</div>
         <div class="text-sm font-bold text-dark mb-1.5">3. Tutup Bila Diperlukan</div>
         <div class="text-xs text-gray-body leading-relaxed">Tutup luka dengan balutan bersih bila diperlukan. Ulangi 3× sehari atau sesuai kebutuhan.</div>

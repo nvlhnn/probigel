@@ -33,6 +33,12 @@ const observer = new IntersectionObserver((entries) => {
     }
   });
 }, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => {
+  Array.from(el.querySelectorAll('.hover-lift')).forEach((child, index) => {
+    child.style.setProperty('--reveal-delay', `${Math.min(index * 70, 280)}ms`);
+    child.classList.add('fade-in');
+  });
+});
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
 // Sticky nav shadow on scroll
