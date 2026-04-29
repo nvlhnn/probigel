@@ -1,0 +1,29 @@
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-teal/10 transition-shadow duration-300" id="site-nav">
+  <div class="max-w-6xl mx-auto px-5 md:px-8 h-16 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2.5 no-underline" aria-label="Probiogel Home">
+      <div class="w-8 h-8 bg-teal rounded-lg flex items-center justify-center text-white font-extrabold text-sm">+</div>
+      <div>
+        <div class="text-base font-extrabold tracking-tight leading-tight">PROBI<span class="logo-dot">●</span>GEL</div>
+        <div class="text-[8px] text-teal font-bold tracking-widest uppercase">{{ site.tagline }}</div>
+      </div>
+    </a>
+
+    <!-- Mobile Toggle -->
+    <button class="nav-toggle nav-toggle-btn p-2 rounded-lg hover:bg-gray-soft" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- Nav Links -->
+    <nav class="nav-links-container hidden md:flex items-center gap-7" id="nav-links">
+      <a href="/" class="nav-link text-[13px] font-medium text-gray-body hover:text-teal transition-colors {% if page.url == '/' %}active{% endif %}">Home</a>
+      <a href="/tentang/" class="nav-link text-[13px] font-medium text-gray-body hover:text-teal transition-colors {% if page.url == '/tentang/' %}active{% endif %}">Tentang</a>
+      <a href="/produk/" class="nav-link text-[13px] font-medium text-gray-body hover:text-teal transition-colors {% if page.url == '/produk/' %}active{% endif %}">Produk</a>
+      <a href="/artikel/" class="nav-link text-[13px] font-medium text-gray-body hover:text-teal transition-colors {% if page.url == '/artikel/' %}active{% endif %}">Artikel</a>
+      <a href="/konsultasi/" class="nav-link text-[13px] font-medium text-gray-body hover:text-teal transition-colors {% if page.url == '/konsultasi/' %}active{% endif %}">Konsultasi</a>
+    </nav>
+
+    <!-- CTA -->
+    <a href="/konsultasi/" class="nav-cta-desktop hidden md:inline-flex bg-teal hover:bg-teal-hover text-white px-5 py-2 rounded-full text-xs font-bold no-underline transition-colors">Konsultasi Gratis</a>
+  </div>
+</header>

@@ -1,0 +1,138 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* ── Custom Theme ── */
+@theme {
+  --color-teal: #0390B1;
+  --color-teal-light: #3DBDDD;
+  --color-teal-pale: #E8F7FB;
+  --color-teal-ultra: #F0FBFD;
+  --color-teal-hover: #0278A0;
+  --color-red-brand: #Fc1602;
+  --color-dark: #0D1B2A;
+  --color-gray-body: #4A5568;
+  --color-gray-soft: #F7F9FC;
+  --color-amber-note: #FFF8E1;
+  --color-amber-border: #FFE082;
+
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+}
+
+/* ── Base ── */
+@layer base {
+  html { scroll-behavior: smooth; }
+
+  body {
+    @apply font-sans text-dark antialiased;
+  }
+
+  /* Animations */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse-gentle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+}
+
+/* ── Scroll Fade ── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Logo ── */
+.logo-dot { color: var(--color-red-brand); }
+
+/* ── Nav active link ── */
+.nav-link { position: relative; }
+.nav-link.active {
+  @apply text-teal font-bold;
+}
+.nav-link.active::after {
+  content: '';
+  @apply absolute -bottom-1 left-0 w-full h-0.5 bg-teal rounded-full;
+}
+
+/* ── Mobile Nav Toggle ── */
+.nav-toggle span {
+  @apply block w-5 h-0.5 bg-dark rounded-full transition-all duration-300;
+}
+.nav-toggle span + span { @apply mt-1; }
+
+/* ── FAQ Accordion ── */
+.faq-item .faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+}
+.faq-item.open .faq-a {
+  max-height: 300px;
+  padding-bottom: 1rem;
+}
+.faq-item.open .faq-arrow {
+  transform: rotate(180deg);
+}
+.faq-arrow {
+  transition: transform 0.3s ease;
+}
+
+/* ── Hero product placeholder ── */
+.product-visual {
+  @apply w-28 h-36 rounded-2xl flex items-center justify-center mx-auto mb-4;
+  background: linear-gradient(135deg, var(--color-teal-pale), #C8EDF5);
+}
+.product-inner {
+  @apply w-13 h-24 bg-white rounded-lg shadow-md flex flex-col items-center justify-center gap-1;
+}
+
+/* ── Trust banner gradient ── */
+.trust-banner-gradient {
+  background: linear-gradient(135deg, var(--color-dark) 0%, #162336 100%);
+}
+
+/* ── Article thumbnails ── */
+.thumb-1 { background: linear-gradient(135deg, #E8F7FB, #C8EDF5); }
+.thumb-2 { background: linear-gradient(135deg, #FFF3E0, #FFE0B2); }
+.thumb-3 { background: linear-gradient(135deg, #FCE4EC, #F8BBD9); }
+.thumb-4 { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); }
+.thumb-5 { background: linear-gradient(135deg, #EDE7F6, #D1C4E9); }
+.thumb-6 { background: linear-gradient(135deg, #E3F2FD, #BBDEFB); }
+
+/* ── Hero gradient ── */
+.hero-gradient {
+  background: linear-gradient(135deg, #F0FBFD 0%, #E0F5FA 50%, #F7F9FC 100%);
+}
+
+/* ── Responsive nav overlay ── */
+@media (max-width: 768px) {
+  .nav-links-container {
+    @apply fixed inset-0 top-16 bg-white flex-col items-center justify-start pt-8 gap-6 z-40;
+    display: none;
+  }
+  .nav-links-container.open {
+    display: flex;
+  }
+  .nav-links-container a {
+    @apply text-lg;
+  }
+  .nav-cta-desktop {
+    @apply hidden;
+  }
+  .nav-toggle-btn {
+    @apply block;
+  }
+}
+@media (min-width: 769px) {
+  .nav-toggle-btn {
+    @apply hidden;
+  }
+}

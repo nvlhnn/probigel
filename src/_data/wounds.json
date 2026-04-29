@@ -1,0 +1,12 @@
+{
+  "items": [
+    { "name": "Luka Ringan", "detail": "Lecet, Gores, Sayat", "icon": "🩸" },
+    { "name": "Luka Bakar", "detail": "Ringan", "icon": "🔥" },
+    { "name": "Luka Pasca", "detail": "Operasi", "icon": "🏥" },
+    { "name": "Luka Infeksi", "detail": "& Terinfeksi", "icon": "🦠" },
+    { "name": "Luka Diabetes", "detail": "Superfisial", "icon": "💉" },
+    { "name": "Luka Nekrotik", "detail": "Kecil", "icon": "🕳️" },
+    { "name": "Luka", "detail": "Lobang", "icon": "⭕" },
+    { "name": "Luka Kronis", "detail": "Susah Sembuh", "icon": "🩹" }
+  ]
+}

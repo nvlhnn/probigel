@@ -1,0 +1,17 @@
+{
+  "wound_types": [
+    "Luka diabetes",
+    "Luka pasca operasi",
+    "Luka infeksi / terinfeksi",
+    "Luka kronis yang susah sembuh",
+    "Luka bakar ringan",
+    "Luka ringan (lecet / gores)",
+    "Lainnya"
+  ],
+  "durations": [
+    "Baru terjadi (kurang dari 1 minggu)",
+    "1 – 4 minggu",
+    "1 – 3 bulan",
+    "Lebih dari 3 bulan"
+  ]
+}

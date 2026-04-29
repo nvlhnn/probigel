@@ -1,0 +1,120 @@
+---
+layout: base.html
+title: Produk
+description: "Probiogel Hydrogel Antiseptic — Antiseptik spray gel modern terdaftar BPOM dan bersertifikat Halal."
+---
+
+<section class="bg-teal-ultra">
+  <div class="max-w-6xl mx-auto px-5 md:px-10 py-10 md:py-12">
+    <div class="text-[11px] font-bold text-teal tracking-widest uppercase mb-2.5">Produk Kami</div>
+    <h1 class="font-serif text-3xl md:text-4xl leading-tight text-dark mb-3">Probiogel Hydrogel Antiseptic</h1>
+    <p class="text-sm text-gray-body leading-relaxed max-w-lg">Antiseptik spray gel modern yang sudah teruji klinis, terdaftar BPOM, dan bersertifikat Halal.</p>
+  </div>
+</section>
+
+{% set product = products.items[0] %}
+<div class="max-w-6xl mx-auto px-5 md:px-10 -mt-1">
+  <div class="bg-white rounded-2xl p-6 md:p-9 flex flex-col md:flex-row gap-8 md:gap-10 items-start border border-teal/10 shadow-lg shadow-teal/5 fade-in">
+    <!-- Visual -->
+    <div class="w-full md:w-44 flex-shrink-0 text-center">
+      <div class="w-36 h-44 mx-auto mb-3.5 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--color-teal-pale), #C8EDF5);">
+        <div class="w-16 h-28 bg-white rounded-lg shadow-md flex flex-col items-center justify-center gap-1">
+          <div class="w-7 h-7 bg-teal rounded-md flex items-center justify-center text-white font-black text-base">+</div>
+          <div class="text-[6px] font-extrabold text-dark">PROBIOGEL</div>
+          <div class="text-[5px] text-gray-body">Hydrogel Antiseptic</div>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-2 justify-center">
+        {% for cert in product.certifications %}
+        <span class="bg-teal-pale border border-teal/20 rounded-md px-2.5 py-1 text-[10px] font-bold text-teal">{{ cert }} ✓</span>
+        {% endfor %}
+      </div>
+    </div>
+    <!-- Info -->
+    <div class="flex-1">
+      <div class="text-2xl md:text-[26px] font-extrabold text-dark mb-1">{{ product.name }}</div>
+      <div class="text-[13px] text-teal font-bold mb-3.5">{{ product.subtitle }}</div>
+      <div class="text-sm text-gray-body leading-relaxed mb-5">{{ product.description }}</div>
+      <div class="flex flex-col gap-2 mb-5">
+        {% for feat in product.features %}
+        <div class="flex items-center gap-2.5 text-[13px] font-medium text-dark">
+          <div class="w-[18px] h-[18px] bg-teal rounded-full flex items-center justify-center text-white text-[10px] shrink-0">✓</div>
+          {{ feat }}
+        </div>
+        {% endfor %}
+      </div>
+      <div class="text-3xl font-black text-dark mb-4">{{ product.price }} <small class="text-sm text-gray-body font-normal">/ {{ product.size }}</small></div>
+      <div class="flex flex-wrap gap-2.5">
+        {% if site.shopee %}<a href="{{ site.shopee }}" class="bg-[#EE4D2D] hover:bg-[#D44426] text-white px-5 py-2.5 rounded-full text-xs font-bold no-underline transition-colors" target="_blank" rel="noopener">🛍️ Shopee</a>{% endif %}
+        {% if site.tiktok %}<a href="{{ site.tiktok }}" class="bg-dark hover:bg-dark/80 text-white px-5 py-2.5 rounded-full text-xs font-bold no-underline transition-colors" target="_blank" rel="noopener">🎵 TikTok Shop</a>{% endif %}
+        {% if site.whatsapp %}<a href="https://wa.me/{{ site.whatsapp }}" class="bg-[#25D366] hover:bg-[#1DA851] text-white px-5 py-2.5 rounded-full text-xs font-bold no-underline transition-colors" target="_blank" rel="noopener">💬 WhatsApp</a>{% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CARA PENGGUNAAN -->
+<section class="fade-in">
+  <div class="max-w-6xl mx-auto px-5 md:px-10 py-10 md:py-14">
+    <div class="text-[11px] font-bold text-teal tracking-widest uppercase mb-2.5">Cara Penggunaan</div>
+    <h2 class="font-serif text-xl md:text-2xl leading-tight text-dark mb-3">Cara menggunakan Probiogel</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+      <div class="bg-teal-ultra border border-teal/12 rounded-2xl p-5 text-center">
+        <div class="text-3xl mb-2.5">🚿</div>
+        <div class="text-sm font-bold text-dark mb-1.5">1. Bersihkan Luka</div>
+        <div class="text-xs text-gray-body leading-relaxed">Bersihkan area luka dari kotoran menggunakan air bersih atau cairan fisiologis.</div>
+      </div>
+      <div class="bg-teal-ultra border border-teal/12 rounded-2xl p-5 text-center">
+        <div class="text-3xl mb-2.5">💨</div>
+        <div class="text-sm font-bold text-dark mb-1.5">2. Semprotkan Probiogel</div>
+        <div class="text-xs text-gray-body leading-relaxed">Semprotkan 3–5 kali ke dasar luka secara merata. Rasakan sensasi adem, tidak perih sama sekali.</div>
+      </div>
+      <div class="bg-teal-ultra border border-teal/12 rounded-2xl p-5 text-center">
+        <div class="text-3xl mb-2.5">🩹</div>
+        <div class="text-sm font-bold text-dark mb-1.5">3. Tutup Bila Diperlukan</div>
+        <div class="text-xs text-gray-body leading-relaxed">Tutup luka dengan balutan bersih bila diperlukan. Ulangi 3× sehari atau sesuai kebutuhan.</div>
+      </div>
+    </div>
+    <div class="bg-amber-note rounded-xl p-3.5 mt-4 text-[13px] text-[#795548] border border-amber-border">
+      <strong>Catatan:</strong> Produk baik digunakan maksimal 6 bulan setelah dibuka. Jika luka diperban, ikuti jadwal ganti perban sesuai anjuran dokter.
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="bg-gray-soft fade-in" id="faq">
+  <div class="max-w-6xl mx-auto px-5 md:px-10 py-12">
+    <div class="text-[11px] font-bold text-teal tracking-widest uppercase mb-2.5">Pertanyaan Umum</div>
+    <h2 class="font-serif text-xl md:text-2xl leading-tight text-dark mb-3">Yang sering ditanyakan</h2>
+    <div class="faq-list mt-8 flex flex-col gap-2.5">
+      <div class="faq-item bg-white rounded-xl border border-black/7 overflow-hidden open">
+        <button class="faq-q w-full text-left px-5 py-4 text-sm font-semibold text-dark flex justify-between items-center cursor-pointer hover:text-teal bg-transparent border-0 font-sans">
+          Apakah Probiogel aman untuk luka diabetes? <span class="faq-arrow text-teal text-base">▾</span>
+        </button>
+        <div class="faq-a px-5 text-[13px] text-gray-body leading-relaxed">Ya, Probiogel dapat membantu menjaga luka diabetes tetap bersih dan mendukung proses healing. Namun untuk luka diabetes yang parah atau sudah mengalami komplikasi serius, tetap diperlukan penanganan dari tenaga medis profesional.</div>
+      </div>
+      <div class="faq-item bg-white rounded-xl border border-black/7 overflow-hidden">
+        <button class="faq-q w-full text-left px-5 py-4 text-sm font-semibold text-dark flex justify-between items-center cursor-pointer hover:text-teal bg-transparent border-0 font-sans">
+          Boleh dipakai untuk luka pasca operasi / SC? <span class="faq-arrow text-teal text-base">▾</span>
+        </button>
+        <div class="faq-a px-5 text-[13px] text-gray-body leading-relaxed">Probiogel dapat membantu menjaga kebersihan luka pasca operasi ringan. Disarankan untuk mengikuti anjuran dokter terlebih dahulu dan menggunakan Probiogel sebagai pendukung perawatan sehari-hari.</div>
+      </div>
+      <div class="faq-item bg-white rounded-xl border border-black/7 overflow-hidden">
+        <button class="faq-q w-full text-left px-5 py-4 text-sm font-semibold text-dark flex justify-between items-center cursor-pointer hover:text-teal bg-transparent border-0 font-sans">
+          Berapa kali sehari penggunaannya? <span class="faq-arrow text-teal text-base">▾</span>
+        </button>
+        <div class="faq-a px-5 text-[13px] text-gray-body leading-relaxed">3 kali sehari atau sesuai kebutuhan. Semprotkan 3–5 kali pada area luka setiap penggunaan. Produk baik digunakan maksimal 6 bulan setelah dibuka.</div>
+      </div>
+      <div class="faq-item bg-white rounded-xl border border-black/7 overflow-hidden">
+        <button class="faq-q w-full text-left px-5 py-4 text-sm font-semibold text-dark flex justify-between items-center cursor-pointer hover:text-teal bg-transparent border-0 font-sans">
+          Kenapa HOCl lebih baik dari alkohol untuk luka? <span class="faq-arrow text-teal text-base">▾</span>
+        </button>
+        <div class="faq-a px-5 text-[13px] text-gray-body leading-relaxed">Alkohol bersifat iritatif dan dapat merusak jaringan sehat di sekitar luka sehingga justru memperlambat penyembuhan. HOCl sebaliknya — membunuh kuman secara efektif (99,999%) tanpa merusak jaringan sehat.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="bg-teal/6 py-3 px-5 md:px-10 text-[11px] text-gray-body border-t border-teal/10">
+  <div class="max-w-6xl mx-auto">Hasil penggunaan produk dapat berbeda pada setiap individu. Untuk kondisi luka yang serius, selalu konsultasikan dengan tenaga medis profesional.</div>
+</div>

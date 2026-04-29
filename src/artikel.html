@@ -1,0 +1,43 @@
+---
+layout: base.html
+title: Artikel & Edukasi
+description: "Artikel edukatif seputar perawatan luka yang ditulis berdasarkan fakta ilmiah."
+---
+
+<section class="bg-gray-soft">
+  <div class="max-w-6xl mx-auto px-5 md:px-10 py-10 md:py-12">
+    <div class="text-[11px] font-bold text-teal tracking-widest uppercase mb-2.5">Edukasi Luka dari Probiogel</div>
+    <h1 class="font-serif text-3xl md:text-4xl leading-tight text-dark mb-3">Referensi Perawatan Luka<br>Terpercaya</h1>
+    <p class="text-sm text-gray-body leading-relaxed max-w-lg">Artikel edukatif seputar perawatan luka yang ditulis berdasarkan fakta ilmiah — dalam bahasa yang mudah dipahami semua orang.</p>
+  </div>
+</section>
+
+<div class="max-w-6xl mx-auto px-5 md:px-10 py-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 fade-in">
+    {% if collections.articles and collections.articles.length > 0 %}
+      {% for article in collections.articles | reverse %}
+      <a href="{{ article.url }}" class="group bg-white rounded-2xl border border-black/7 overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-all duration-200 no-underline flex flex-col h-full">
+        <div class="thumb-{{ loop.index0 % 6 + 1 }} h-32 md:h-36 flex items-center justify-center text-4xl">
+          {{ article.data.icon | default("📄") }}
+        </div>
+        <div class="p-4 md:p-5 flex flex-col flex-grow">
+          <div class="text-[10px] font-extrabold text-teal tracking-wider uppercase mb-1.5">{{ article.data.category | default("Umum") }}</div>
+          <div class="text-[15px] font-bold text-dark leading-snug mb-1.5 group-hover:text-teal transition-colors">{{ article.data.title }}</div>
+          <div class="text-xs text-gray-body leading-relaxed flex-grow line-clamp-3 mb-3">{{ article.data.description }}</div>
+          <div class="text-[11px] text-gray-body mt-auto">{{ article.date | dateFormat }}</div>
+        </div>
+      </a>
+      {% endfor %}
+    {% else %}
+      <div class="col-span-full text-center py-12">
+        <div class="text-4xl mb-4">📝</div>
+        <h3 class="text-lg font-bold text-dark mb-2">Belum ada artikel</h3>
+        <p class="text-sm text-gray-body">Artikel dan edukasi terbaru akan segera hadir di sini.</p>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<div class="bg-teal/6 py-3 px-5 md:px-10 text-[11px] text-gray-body border-t border-teal/10">
+  <div class="max-w-6xl mx-auto">Artikel ini bersifat edukatif dan tidak menggantikan saran atau diagnosis dari tenaga medis profesional.</div>
+</div>

@@ -1,0 +1,52 @@
+<footer class="bg-dark text-white" id="site-footer">
+  <div class="max-w-6xl mx-auto px-5 md:px-10 pt-12 pb-7">
+    <!-- Top Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-8 md:gap-9 pb-8 border-b border-white/8 mb-6">
+      <!-- Brand -->
+      <div>
+        <div class="text-xl font-extrabold mb-2.5">PROBI<span class="logo-dot">●</span>GEL</div>
+        <div class="text-xs text-white/45 leading-relaxed mb-4">{{ site.description }}</div>
+        <div class="flex gap-2 mb-3">
+          {% if site.instagram %}<a class="w-8 h-8 rounded-lg bg-white/8 hover:bg-white/15 flex items-center justify-center text-sm no-underline transition-colors" href="{{ site.instagram }}" target="_blank" rel="noopener" aria-label="Instagram">📷</a>{% endif %}
+          {% if site.tiktok %}<a class="w-8 h-8 rounded-lg bg-white/8 hover:bg-white/15 flex items-center justify-center text-sm no-underline transition-colors" href="{{ site.tiktok }}" target="_blank" rel="noopener" aria-label="TikTok">🎵</a>{% endif %}
+          {% if site.shopee %}<a class="w-8 h-8 rounded-lg bg-white/8 hover:bg-white/15 flex items-center justify-center text-sm no-underline transition-colors" href="{{ site.shopee }}" target="_blank" rel="noopener" aria-label="Shopee">🛍️</a>{% endif %}
+          {% if site.whatsapp %}<a class="w-8 h-8 rounded-lg bg-white/8 hover:bg-white/15 flex items-center justify-center text-sm no-underline transition-colors" href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>{% endif %}
+        </div>
+        <div class="text-[11px] text-white/35 leading-relaxed">{{ site.address }}</div>
+      </div>
+      <!-- Navigasi -->
+      <div>
+        <div class="text-xs font-bold mb-3.5 tracking-wide">Navigasi</div>
+        <div class="flex flex-col gap-2.5">
+          <a href="/" class="text-xs text-white/45 hover:text-teal-light no-underline transition-colors">Home</a>
+          <a href="/tentang/" class="text-xs text-white/45 hover:text-teal-light no-underline transition-colors">Tentang</a>
+          <a href="/produk/" class="text-xs text-white/45 hover:text-teal-light no-underline transition-colors">Produk</a>
+          <a href="/artikel/" class="text-xs text-white/45 hover:text-teal-light no-underline transition-colors">Artikel</a>
+          <a href="/konsultasi/" class="text-xs text-white/45 hover:text-teal-light no-underline transition-colors">Konsultasi</a>
+        </div>
+      </div>
+      <!-- CS -->
+      <div>
+        <div class="text-xs font-bold mb-3.5 tracking-wide">Customer Service</div>
+        <div class="flex flex-col gap-2.5">
+          <a href="/produk/#faq" class="text-xs text-white/45 hover:text-teal-light no-underline transition-colors">FAQ</a>
+          <a href="/konsultasi/" class="text-xs text-white/45 hover:text-teal-light no-underline transition-colors">Hubungi Kami</a>
+        </div>
+      </div>
+      <!-- Beli -->
+      <div>
+        <div class="text-xs font-bold mb-3.5 tracking-wide">Beli Sekarang</div>
+        <div class="flex flex-col gap-2.5">
+          {% if site.shopee %}<a href="{{ site.shopee }}" target="_blank" rel="noopener" class="text-xs text-white/45 hover:text-teal-light no-underline transition-colors">Shopee</a>{% endif %}
+          {% if site.tiktok %}<a href="{{ site.tiktok }}" target="_blank" rel="noopener" class="text-xs text-white/45 hover:text-teal-light no-underline transition-colors">TikTok Shop</a>{% endif %}
+          {% if site.whatsapp %}<a href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener" class="text-xs text-white/45 hover:text-teal-light no-underline transition-colors">WhatsApp Order</a>{% endif %}
+        </div>
+      </div>
+    </div>
+    <!-- Bottom -->
+    <div class="flex flex-col md:flex-row justify-between text-[11px] text-white/30 gap-1">
+      <div>© 2026 {{ site.name }} · {{ site.company }}</div>
+      <div>BPOM No. {{ site.bpom }} · Halal Indonesia</div>
+    </div>
+  </div>
+</footer>

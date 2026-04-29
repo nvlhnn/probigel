@@ -1,0 +1,104 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "src/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "testimonials"
+    label: "Testimoni"
+    file: "src/_data/testimonials.json"
+    description: "Kelola testimoni pengguna"
+    fields:
+      - name: "items"
+        label: "Daftar Testimoni"
+        widget: "list"
+        fields:
+          - { name: "name", label: "Nama", widget: "string" }
+          - { name: "initials", label: "Inisial", widget: "string" }
+          - { name: "text", label: "Testimoni", widget: "text" }
+          - { name: "meta", label: "Info (profesi, kota)", widget: "string" }
+          - { name: "source", label: "Sumber", widget: "string" }
+          - { name: "rating", label: "Rating (1-5)", widget: "number", min: 1, max: 5 }
+
+  - name: "wounds"
+    label: "Jenis Luka"
+    file: "src/_data/wounds.json"
+    description: "Kelola jenis luka yang ditampilkan"
+    fields:
+      - name: "items"
+        label: "Daftar Luka"
+        widget: "list"
+        fields:
+          - { name: "name", label: "Nama Luka", widget: "string" }
+          - { name: "detail", label: "Detail", widget: "string" }
+          - { name: "icon", label: "Emoji Icon", widget: "string" }
+
+  - name: "products"
+    label: "Produk"
+    file: "src/_data/products.json"
+    description: "Kelola data produk"
+    fields:
+      - name: "items"
+        label: "Daftar Produk"
+        widget: "list"
+        fields:
+          - { name: "name", label: "Nama Produk", widget: "string" }
+          - { name: "subtitle", label: "Subtitle", widget: "string" }
+          - { name: "description", label: "Deskripsi", widget: "text" }
+          - { name: "price", label: "Harga", widget: "string" }
+          - { name: "size", label: "Ukuran", widget: "string" }
+          - { name: "image", label: "Foto Produk", widget: "image", required: false }
+          - name: "features"
+            label: "Fitur"
+            widget: "list"
+            field: { name: "feature", label: "Fitur", widget: "string" }
+          - name: "certifications"
+            label: "Sertifikasi"
+            widget: "list"
+            field: { name: "cert", label: "Sertifikasi", widget: "string" }
+
+  - name: "articles"
+    label: "Artikel"
+    folder: "src/artikel"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Category", name: "category", widget: "string", hint: "Contoh: Edukasi HOCl, Luka Diabetes" }
+      - { label: "Emoji Icon", name: "icon", widget: "string", hint: "Contoh: 🦠, 🏥, 💧" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "site"
+    label: "Pengaturan Situs"
+    file: "src/_data/site.json"
+    description: "Pengaturan umum website"
+    fields:
+      - { name: "name", label: "Nama Situs", widget: "string" }
+      - { name: "tagline", label: "Tagline", widget: "string" }
+      - { name: "description", label: "Deskripsi", widget: "text" }
+      - { name: "address", label: "Alamat", widget: "text" }
+      - { name: "bpom", label: "No. BPOM", widget: "string" }
+      - { name: "company", label: "Nama Perusahaan", widget: "string" }
+      - { name: "whatsapp", label: "No. WhatsApp (tanpa +)", widget: "string", required: false }
+      - { name: "instagram", label: "URL Instagram", widget: "string", required: false }
+      - { name: "tiktok", label: "URL TikTok", widget: "string", required: false }
+      - { name: "shopee", label: "URL Shopee", widget: "string", required: false }
+      - { name: "email", label: "Email", widget: "string", required: false }
+
+  - name: "form_options"
+    label: "Pengaturan Formulir"
+    file: "src/_data/formOptions.json"
+    description: "Kelola pilihan dropdown pada formulir konsultasi"
+    fields:
+      - name: "wound_types"
+        label: "Pilihan Jenis Luka"
+        widget: "list"
+        field: { name: "type", label: "Jenis Luka", widget: "string" }
+      - name: "durations"
+        label: "Pilihan Durasi"
+        widget: "list"
+        field: { name: "duration", label: "Durasi", widget: "string" }

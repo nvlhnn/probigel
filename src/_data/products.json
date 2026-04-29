@@ -1,0 +1,21 @@
+{
+  "items": [
+    {
+      "name": "Probiogel Hydrogel",
+      "subtitle": "Antiseptik Spray Gel · 70ml · Technology from Japan",
+      "description": "Antiseptik modern berbasis HOCl yang bekerja seperti sistem imun tubuh. Terbukti membunuh 99,999% bakteri dalam 5 menit — tanpa rasa perih, tanpa alkohol, aman untuk berbagai jenis luka dari ringan hingga kronis.",
+      "price": "Rp [Harga]",
+      "size": "70ml",
+      "image": "/images/product-probiogel.png",
+      "features": [
+        "Tidak perih — formulasi tanpa alkohol",
+        "HOCl 0,02% berbasis teknologi Jepang",
+        "Terbukti bunuh 99,999% bakteri (uji lab LPOMK UII)",
+        "Halal & BPOM No. PKD20501420058",
+        "Aman untuk kulit sensitif & penggunaan berulang",
+        "Hydrogel pertama dengan HOCl di Indonesia"
+      ],
+      "certifications": ["Halal", "BPOM", "HOCl", "99,999%"]
+    }
+  ]
+}

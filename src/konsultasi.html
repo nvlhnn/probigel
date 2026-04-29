@@ -1,0 +1,106 @@
+---
+layout: base.html
+title: Konsultasi
+description: "Konsultasi gratis seputar perawatan luka via WhatsApp. Tim kami siap membantu."
+---
+
+<section class="bg-teal-ultra">
+  <div class="max-w-6xl mx-auto px-5 md:px-10 py-10 md:py-12">
+    <div class="text-[11px] font-bold text-teal tracking-widest uppercase mb-2.5">Konsultasi Gratis</div>
+    <h1 class="font-serif text-3xl md:text-4xl leading-tight text-dark mb-3">Tanya langsung ke ahlinya —<br>tanpa biaya, tanpa ribet</h1>
+    <p class="text-sm text-gray-body leading-relaxed max-w-lg">Punya pertanyaan soal luka? Tim kami siap membantu kamu memahami kondisi luka dan cara perawatan yang tepat — gratis via WhatsApp.</p>
+  </div>
+</section>
+
+<div class="max-w-6xl mx-auto px-5 md:px-10 py-7 md:py-10 grid grid-cols-1 md:grid-cols-2 gap-7">
+  <!-- Form -->
+  <div class="bg-white rounded-2xl p-6 md:p-7 border border-teal/12 fade-in">
+    <div class="text-[17px] font-extrabold text-dark mb-1">Formulir Konsultasi</div>
+    <div class="text-xs text-gray-body mb-5">Isi dulu, tim kami akan segera menghubungi kamu via WhatsApp.</div>
+    <form id="konsultasi-form" name="konsultasi" method="POST" data-netlify="true">
+      <div class="mb-3.5">
+        <label class="text-xs font-bold text-dark mb-1.5 block" for="nama">Nama lengkap</label>
+        <input type="text" id="nama" name="nama" class="w-full px-3.5 py-2.5 border-[1.5px] border-black/10 rounded-xl text-[13px] font-sans text-dark bg-white transition-colors focus:outline-none focus:border-teal" placeholder="Nama kamu" required>
+      </div>
+      <div class="mb-3.5">
+        <label class="text-xs font-bold text-dark mb-1.5 block" for="whatsapp">Nomor WhatsApp</label>
+        <input type="tel" id="whatsapp" name="whatsapp" class="w-full px-3.5 py-2.5 border-[1.5px] border-black/10 rounded-xl text-[13px] font-sans text-dark bg-white transition-colors focus:outline-none focus:border-teal" placeholder="08xx-xxxx-xxxx" required>
+      </div>
+      <div class="mb-3.5">
+        <label class="text-xs font-bold text-dark mb-1.5 block" for="jenis-luka">Jenis luka</label>
+        <select id="jenis-luka" name="jenis_luka" class="w-full px-3.5 py-2.5 border-[1.5px] border-black/10 rounded-xl text-[13px] font-sans text-dark bg-white transition-colors focus:outline-none focus:border-teal" required>
+          <option value="">Pilih jenis luka...</option>
+          {% for type in formOptions.wound_types %}
+          <option>{{ type }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="mb-3.5">
+        <label class="text-xs font-bold text-dark mb-1.5 block" for="durasi">Sudah berapa lama?</label>
+        <select id="durasi" name="durasi" class="w-full px-3.5 py-2.5 border-[1.5px] border-black/10 rounded-xl text-[13px] font-sans text-dark bg-white transition-colors focus:outline-none focus:border-teal">
+          <option value="">Pilih durasi...</option>
+          {% for duration in formOptions.durations %}
+          <option>{{ duration }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="mb-3.5">
+        <label class="text-xs font-bold text-dark mb-1.5 block" for="pertanyaan">Pertanyaan kamu</label>
+        <textarea id="pertanyaan" name="pertanyaan" class="w-full px-3.5 py-2.5 border-[1.5px] border-black/10 rounded-xl text-[13px] font-sans text-dark bg-white transition-colors focus:outline-none focus:border-teal resize-y min-h-[88px]" placeholder="Ceritakan kondisi luka dan apa yang ingin kamu tanyakan..."></textarea>
+      </div>
+      <button type="submit" class="w-full bg-teal hover:bg-teal-hover text-white py-3 rounded-full text-sm font-bold cursor-pointer font-sans border-0 mt-1 transition-colors">📨 Kirim Konsultasi</button>
+    </form>
+  </div>
+
+  <!-- Right Column -->
+  <div class="flex flex-col gap-3.5 fade-in">
+    <!-- Expert Card -->
+    <div class="bg-white rounded-2xl p-6 border border-teal/12">
+      <div class="flex gap-3.5 items-center mb-4">
+        <div class="w-14 h-14 rounded-full bg-teal-pale flex items-center justify-center text-2xl shrink-0">👩‍⚕️</div>
+        <div>
+          <div class="text-base font-extrabold text-dark">Tim Konsultan Probiogel</div>
+          <div class="text-xs text-teal font-bold">Public Health Educator</div>
+          <div class="text-xs text-gray-body">Spesialis edukasi perawatan luka</div>
+        </div>
+      </div>
+      <hr class="border-t border-black/7 my-3.5">
+      <div class="flex justify-between mb-4">
+        <div><div class="text-xl font-extrabold text-teal">1.000+</div><div class="text-[11px] text-gray-body">Konsultasi ditangani</div></div>
+        <div><div class="text-xl font-extrabold text-teal">&lt; 1 jam</div><div class="text-[11px] text-gray-body">Rata-rata respons</div></div>
+        <div><div class="text-xl font-extrabold text-teal">Gratis</div><div class="text-[11px] text-gray-body">Tanpa biaya</div></div>
+      </div>
+      {% if site.whatsapp %}
+      <a href="https://wa.me/{{ site.whatsapp }}" class="flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#1DA851] text-white py-3 rounded-full text-sm font-bold no-underline transition-colors" target="_blank" rel="noopener">💬 Chat Langsung via WhatsApp</a>
+      {% else %}
+      <button class="flex items-center justify-center gap-2 w-full bg-[#25D366] text-white py-3 rounded-full text-sm font-bold cursor-not-allowed opacity-60 border-0 font-sans" disabled>💬 Chat Langsung via WhatsApp</button>
+      {% endif %}
+    </div>
+
+    <!-- Jam Konsultasi -->
+    <div class="bg-white rounded-2xl p-5 border border-teal/12">
+      <div class="text-[13px] font-bold text-dark mb-2.5">⏰ Jam Konsultasi</div>
+      <div class="flex justify-between text-xs text-gray-body py-1.5 border-b border-black/5"><span>Senin – Jumat</span><span class="font-semibold text-dark">08.00 – 17.00 WIB</span></div>
+      <div class="flex justify-between text-xs text-gray-body py-1.5 border-b border-black/5"><span>Sabtu</span><span class="font-semibold text-dark">08.00 – 13.00 WIB</span></div>
+      <div class="flex justify-between text-xs text-gray-body py-1.5"><span>Minggu & Libur</span><span class="font-semibold text-[#EE4D2D]">Tutup</span></div>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="bg-teal-pale rounded-2xl p-4 border border-teal/20 text-xs text-dark leading-relaxed">
+      <strong>⚠️ Disclaimer:</strong> Konsultasi ini bersifat edukatif dan informatif. Untuk kondisi darurat atau luka serius, segera hubungi tenaga medis atau fasilitas kesehatan terdekat.
+    </div>
+
+    <!-- Social -->
+    <div class="bg-white rounded-2xl p-5 border border-teal/12">
+      <div class="text-[13px] font-bold text-dark mb-3">📱 Ikuti Kami</div>
+      <div class="flex gap-2.5">
+        {% if site.instagram %}<a href="{{ site.instagram }}" class="bg-teal-pale hover:bg-teal-pale/70 text-teal px-4 py-2 rounded-full text-xs font-bold no-underline transition-colors" target="_blank" rel="noopener">📷 Instagram</a>{% endif %}
+        {% if site.tiktok %}<a href="{{ site.tiktok }}" class="bg-dark hover:bg-dark/80 text-white px-4 py-2 rounded-full text-xs font-bold no-underline transition-colors" target="_blank" rel="noopener">🎵 TikTok</a>{% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bg-teal/6 py-3 px-5 md:px-10 text-[11px] text-gray-body border-t border-teal/10">
+  <div class="max-w-6xl mx-auto">Layanan konsultasi ini tidak menggantikan diagnosis atau perawatan medis profesional. Untuk kondisi darurat, segera hubungi fasilitas kesehatan terdekat.</div>
+</div>
