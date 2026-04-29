@@ -13,6 +13,21 @@ function readJsonFolder(folder) {
     .sort((a, b) => (a.order || 100) - (b.order || 100));
 }
 
+function resolveImageUrl(url) {
+  if (!url) return "";
+
+  const value = String(url).trim();
+  const driveFileMatch = value.match(/drive\.google\.com\/file\/d\/([^/]+)/);
+  const driveIdMatch = value.match(/[?&]id=([^&]+)/);
+  const driveId = driveFileMatch?.[1] || driveIdMatch?.[1];
+
+  if (driveId) {
+    return `https://drive.google.com/uc?export=view&id=${driveId}`;
+  }
+
+  return value;
+}
+
 module.exports = function (eleventyConfig) {
   // Passthrough copy — don't copy css since Tailwind builds to _site/css
   eleventyConfig.addPassthroughCopy("src/js");
@@ -39,6 +54,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("stars", function (n) {
     return "★".repeat(n) + "☆".repeat(5 - n);
   });
+
+  eleventyConfig.addFilter("imageUrl", resolveImageUrl);
 
   // Sort FAQ by order
   eleventyConfig.addCollection("faqSorted", function(collectionApi) {

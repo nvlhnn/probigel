@@ -19,7 +19,7 @@ description: "Probiogel Hydrogel Antiseptic — Antiseptik spray gel modern terd
     <div class="w-full md:w-44 flex-shrink-0 text-center">
       <div class="w-36 h-44 mx-auto mb-3.5 rounded-2xl flex items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, var(--color-teal-pale), #C8EDF5);">
         {% if product.image %}
-        <img src="{{ product.image }}" alt="{{ product.name }}" class="w-full h-full object-contain p-3">
+        <img src="{{ product.image | imageUrl }}" alt="{{ product.name }}" class="w-full h-full object-contain p-3">
         {% else %}
         <div class="w-16 h-28 bg-white rounded-lg shadow-md flex flex-col items-center justify-center gap-1">
           <div class="w-7 h-7 bg-teal rounded-md flex items-center justify-center text-white font-black text-base">+</div>

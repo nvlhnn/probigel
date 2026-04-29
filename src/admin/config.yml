@@ -251,10 +251,9 @@ collections:
       - { label: "Ukuran", name: "size", widget: "string" }
       - label: "Foto Produk"
         name: "image"
-        widget: "image"
+        widget: "string"
         required: false
-        media_folder: "/src/images/uploads/products"
-        public_folder: "/images/uploads/products"
+        hint: "Paste URL gambar langsung atau link share Google Drive. Pastikan akses file Google Drive diset ke Anyone with the link."
       - label: "Badge / Label"
         name: "badge"
         widget: "string"
