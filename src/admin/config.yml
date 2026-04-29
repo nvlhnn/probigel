@@ -102,7 +102,7 @@ collections:
         widget: "image"
         required: false
         hint: "Gambar hero/thumbnail (rasio 16:9 disarankan)"
-        media_folder: "src/images/uploads/articles"
+        media_folder: "/src/images/uploads/articles"
         public_folder: "/images/uploads/articles"
 
       - label: "Penulis"
@@ -253,7 +253,7 @@ collections:
         name: "image"
         widget: "image"
         required: false
-        media_folder: "src/images/uploads/products"
+        media_folder: "/src/images/uploads/products"
         public_folder: "/images/uploads/products"
       - label: "Badge / Label"
         name: "badge"

@@ -17,12 +17,16 @@ description: "Probiogel Hydrogel Antiseptic — Antiseptik spray gel modern terd
   <div class="bg-white rounded-2xl p-6 md:p-9 flex flex-col md:flex-row gap-8 md:gap-10 items-start border border-teal/10 shadow-lg shadow-teal/5 fade-in">
     <!-- Visual -->
     <div class="w-full md:w-44 flex-shrink-0 text-center">
-      <div class="w-36 h-44 mx-auto mb-3.5 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--color-teal-pale), #C8EDF5);">
+      <div class="w-36 h-44 mx-auto mb-3.5 rounded-2xl flex items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, var(--color-teal-pale), #C8EDF5);">
+        {% if product.image %}
+        <img src="{{ product.image }}" alt="{{ product.name }}" class="w-full h-full object-contain p-3">
+        {% else %}
         <div class="w-16 h-28 bg-white rounded-lg shadow-md flex flex-col items-center justify-center gap-1">
           <div class="w-7 h-7 bg-teal rounded-md flex items-center justify-center text-white font-black text-base">+</div>
           <div class="text-[6px] font-extrabold text-dark">PROBIOGEL</div>
           <div class="text-[5px] text-gray-body">Hydrogel Antiseptic</div>
         </div>
+        {% endif %}
       </div>
       <div class="flex flex-wrap gap-2 justify-center">
         {% for cert in product.certifications %}
