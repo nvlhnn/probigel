@@ -7,10 +7,10 @@
         <div class="text-xl font-extrabold mb-2.5">PROBI<span class="logo-dot">●</span>GEL</div>
         <div class="text-xs text-white/45 leading-relaxed mb-4">{{ site.description }}</div>
         <div class="flex gap-2 mb-3">
-          {% if site.instagram %}<a class="w-8 h-8 rounded-lg bg-white/8 hover:bg-white/15 flex items-center justify-center text-sm no-underline transition-colors" href="{{ site.instagram }}" target="_blank" rel="noopener" aria-label="Instagram">📷</a>{% endif %}
-          {% if site.tiktok %}<a class="w-8 h-8 rounded-lg bg-white/8 hover:bg-white/15 flex items-center justify-center text-sm no-underline transition-colors" href="{{ site.tiktok }}" target="_blank" rel="noopener" aria-label="TikTok">🎵</a>{% endif %}
-          {% if site.shopee %}<a class="w-8 h-8 rounded-lg bg-white/8 hover:bg-white/15 flex items-center justify-center text-sm no-underline transition-colors" href="{{ site.shopee }}" target="_blank" rel="noopener" aria-label="Shopee">🛍️</a>{% endif %}
-          {% if site.whatsapp %}<a class="w-8 h-8 rounded-lg bg-white/8 hover:bg-white/15 flex items-center justify-center text-sm no-underline transition-colors" href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>{% endif %}
+          {% if site.contact.instagram %}<a class="w-8 h-8 rounded-lg bg-white/8 hover:bg-white/15 flex items-center justify-center text-sm no-underline transition-colors" href="{{ site.contact.instagram }}" target="_blank" rel="noopener" aria-label="Instagram">📷</a>{% endif %}
+          {% if site.contact.tiktok %}<a class="w-8 h-8 rounded-lg bg-white/8 hover:bg-white/15 flex items-center justify-center text-sm no-underline transition-colors" href="{{ site.contact.tiktok }}" target="_blank" rel="noopener" aria-label="TikTok">🎵</a>{% endif %}
+          {% if site.contact.shopee %}<a class="w-8 h-8 rounded-lg bg-white/8 hover:bg-white/15 flex items-center justify-center text-sm no-underline transition-colors" href="{{ site.contact.shopee }}" target="_blank" rel="noopener" aria-label="Shopee">🛍️</a>{% endif %}
+          {% if site.contact.whatsapp %}<a class="w-8 h-8 rounded-lg bg-white/8 hover:bg-white/15 flex items-center justify-center text-sm no-underline transition-colors" href="https://wa.me/{{ site.contact.whatsapp }}" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>{% endif %}
         </div>
         <div class="text-[11px] text-white/35 leading-relaxed">{{ site.address }}</div>
       </div>
@@ -37,9 +37,9 @@
       <div>
         <div class="text-xs font-bold mb-3.5 tracking-wide">Beli Sekarang</div>
         <div class="flex flex-col gap-2.5">
-          {% if site.shopee %}<a href="{{ site.shopee }}" target="_blank" rel="noopener" class="text-xs text-white/45 hover:text-teal-light no-underline transition-colors">Shopee</a>{% endif %}
-          {% if site.tiktok %}<a href="{{ site.tiktok }}" target="_blank" rel="noopener" class="text-xs text-white/45 hover:text-teal-light no-underline transition-colors">TikTok Shop</a>{% endif %}
-          {% if site.whatsapp %}<a href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener" class="text-xs text-white/45 hover:text-teal-light no-underline transition-colors">WhatsApp Order</a>{% endif %}
+          {% if site.contact.shopee %}<a href="{{ site.contact.shopee }}" target="_blank" rel="noopener" class="text-xs text-white/45 hover:text-teal-light no-underline transition-colors">Shopee</a>{% endif %}
+          {% if site.contact.tiktok %}<a href="{{ site.contact.tiktok }}" target="_blank" rel="noopener" class="text-xs text-white/45 hover:text-teal-light no-underline transition-colors">TikTok Shop</a>{% endif %}
+          {% if site.contact.whatsapp %}<a href="https://wa.me/{{ site.contact.whatsapp }}" target="_blank" rel="noopener" class="text-xs text-white/45 hover:text-teal-light no-underline transition-colors">WhatsApp Order</a>{% endif %}
         </div>
       </div>
     </div>

@@ -70,8 +70,8 @@ description: "Konsultasi gratis seputar perawatan luka via WhatsApp. Tim kami si
         <div><div class="text-xl font-extrabold text-teal">&lt; 1 jam</div><div class="text-[11px] text-gray-body">Rata-rata respons</div></div>
         <div><div class="text-xl font-extrabold text-teal">Gratis</div><div class="text-[11px] text-gray-body">Tanpa biaya</div></div>
       </div>
-      {% if site.whatsapp %}
-      <a href="https://wa.me/{{ site.whatsapp }}" class="flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#1DA851] text-white py-3 rounded-full text-sm font-bold no-underline transition-colors" target="_blank" rel="noopener">💬 Chat Langsung via WhatsApp</a>
+      {% if site.contact.whatsapp %}
+      <a href="https://wa.me/{{ site.contact.whatsapp }}" class="flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#1DA851] text-white py-3 rounded-full text-sm font-bold no-underline transition-colors" target="_blank" rel="noopener">💬 Chat Langsung via WhatsApp</a>
       {% else %}
       <button class="flex items-center justify-center gap-2 w-full bg-[#25D366] text-white py-3 rounded-full text-sm font-bold cursor-not-allowed opacity-60 border-0 font-sans" disabled>💬 Chat Langsung via WhatsApp</button>
       {% endif %}
@@ -94,8 +94,8 @@ description: "Konsultasi gratis seputar perawatan luka via WhatsApp. Tim kami si
     <div class="bg-white rounded-2xl p-5 border border-teal/12">
       <div class="text-[13px] font-bold text-dark mb-3">📱 Ikuti Kami</div>
       <div class="flex gap-2.5">
-        {% if site.instagram %}<a href="{{ site.instagram }}" class="bg-teal-pale hover:bg-teal-pale/70 text-teal px-4 py-2 rounded-full text-xs font-bold no-underline transition-colors" target="_blank" rel="noopener">📷 Instagram</a>{% endif %}
-        {% if site.tiktok %}<a href="{{ site.tiktok }}" class="bg-dark hover:bg-dark/80 text-white px-4 py-2 rounded-full text-xs font-bold no-underline transition-colors" target="_blank" rel="noopener">🎵 TikTok</a>{% endif %}
+        {% if site.contact.instagram %}<a href="{{ site.contact.instagram }}" class="bg-teal-pale hover:bg-teal-pale/70 text-teal px-4 py-2 rounded-full text-xs font-bold no-underline transition-colors" target="_blank" rel="noopener">📷 Instagram</a>{% endif %}
+        {% if site.contact.tiktok %}<a href="{{ site.contact.tiktok }}" class="bg-dark hover:bg-dark/80 text-white px-4 py-2 rounded-full text-xs font-bold no-underline transition-colors" target="_blank" rel="noopener">🎵 TikTok</a>{% endif %}
       </div>
     </div>
   </div>

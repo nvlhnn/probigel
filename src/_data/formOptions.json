@@ -13,5 +13,10 @@
     "1 – 4 minggu",
     "1 – 3 bulan",
     "Lebih dari 3 bulan"
+  ],
+  "severity_levels": [
+    "Ringan — luka kecil, tidak bernanah",
+    "Sedang — luka cukup besar atau mulai kemerahan",
+    "Berat — luka dalam, bernanah, atau tidak kunjung sembuh"
   ]
 }

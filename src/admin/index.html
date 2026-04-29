@@ -1,12 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
   <title>Content Manager — Probiogel</title>
+
+  <!-- Decap CMS stylesheet for preview pane -->
+  <style>
+    /* Custom CMS branding */
+    [data-slate-editor] { font-family: system-ui, -apple-system, sans-serif; }
+  </style>
 </head>
 <body>
+  <!-- Netlify Identity widget — required for git-gateway auth -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+  <!-- Decap CMS — pinned to 3.x minor for stability -->
+  <script src="https://unpkg.com/decap-cms@^3.3.3/dist/decap-cms.js"></script>
+
+  <!-- Redirect after Netlify Identity login (handles callback) -->
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", function (user) {
+        if (!user) {
+          window.netlifyIdentity.on("login", function () {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
 </body>
 </html>

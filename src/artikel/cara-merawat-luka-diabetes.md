@@ -2,7 +2,13 @@
 title: "Cara Tepat Merawat Luka Diabetes Agar Cepat Kering"
 description: "Panduan lengkap perawatan luka diabetes di rumah menggunakan teknologi HOCl yang aman dan terbukti klinis mempercepat penyembuhan."
 category: "Luka Diabetes"
+tags:
+  - diabetes
+  - perawatan luka
+  - HOCl
 icon: "🩸"
+featured_image: ""
+author: "Tim Probiogel"
 date: 2026-04-29T08:00:00Z
 ---
 

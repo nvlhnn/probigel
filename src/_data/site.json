@@ -2,12 +2,21 @@
   "name": "Probiogel",
   "tagline": "Technology from Japan",
   "description": "Antiseptik modern berbasis HOCl — solusi healing yang sudah teruji untuk luka yang tidak kunjung sembuh.",
+  "url": "https://probiogel.id",
+  "logo": "",
   "address": "Jl. Prof. DR. Soepomo Sh No.123, Warungboto, Kec. Umbulharjo, Kota Yogyakarta, DIY 55164",
   "bpom": "PKD20501420058",
   "company": "PT. Kymmoshi Global Indonesia",
-  "whatsapp": "",
-  "instagram": "",
-  "tiktok": "",
-  "shopee": "",
-  "email": ""
+  "contact": {
+    "whatsapp": "",
+    "email": "",
+    "instagram": "",
+    "tiktok": "",
+    "shopee": "",
+    "tokopedia": ""
+  },
+  "seo": {
+    "og_image": "",
+    "keywords": "probiogel, antiseptik HOCl, perawatan luka, luka diabetes, hypochlorous acid, antiseptik modern"
+  }
 }

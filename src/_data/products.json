@@ -7,6 +7,9 @@
       "price": "Rp [Harga]",
       "size": "70ml",
       "image": "/images/product-probiogel.png",
+      "badge": "Best Seller",
+      "is_popular": true,
+      "buy_url": "",
       "features": [
         "Tidak perih — formulasi tanpa alkohol",
         "HOCl 0,02% berbasis teknologi Jepang",
@@ -15,7 +18,12 @@
         "Aman untuk kulit sensitif & penggunaan berulang",
         "Hydrogel pertama dengan HOCl di Indonesia"
       ],
-      "certifications": ["Halal", "BPOM", "HOCl", "99,999%"]
+      "certifications": ["Halal", "BPOM", "HOCl", "99,999%"],
+      "ingredients": [
+        "Aqua",
+        "Hypochlorous Acid (HOCl) 0,02%",
+        "Sodium Chloride"
+      ]
     }
   ]
 }

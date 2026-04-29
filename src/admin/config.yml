@@ -1,107 +1,360 @@
+# ─────────────────────────────────────────────────────────────
+# Decap CMS Configuration — Probiogel
+# Best-practice setup: editorial workflow, i18n, local dev
+# ─────────────────────────────────────────────────────────────
+
+# Enable local backend for development (run: npx decap-server)
+local_backend: true
+
 backend:
   name: git-gateway
   branch: main
+  # Squash merge keeps git history clean
+  squash_merges: true
 
+# Editorial workflow: content goes through draft → review → publish
+publish_mode: editorial_workflow
+
+# Indonesian locale for CMS UI labels
+locale: id
+
+# Branding
+site_url: https://probiogel.id
+display_url: https://probiogel.id
+logo_url: /images/logo-probiogel.png
+
+# Media
 media_folder: "src/images/uploads"
 public_folder: "/images/uploads"
 
+# Disable preview pane globally (enable per-collection where useful)
+editor:
+  preview: false
+
+# ─────────────────────────────────────────────────────────────
+# COLLECTIONS
+# ─────────────────────────────────────────────────────────────
+
 collections:
+  # ═══════════════════════════════════════════════════════════
+  # ARTIKEL (Folder Collection — Markdown files)
+  # ═══════════════════════════════════════════════════════════
   - name: "articles"
-    label: "Artikel"
+    label: "📝 Artikel"
+    label_singular: "Artikel"
     folder: "src/artikel"
     create: true
+    delete: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    sortable_fields: ["date", "title", "category"]
+    summary: "{{title}} — {{category}} ({{year}}/{{month}}/{{day}})"
+    view_filters:
+      - label: "Edukasi HOCl"
+        field: category
+        pattern: "Edukasi HOCl"
+      - label: "Luka Diabetes"
+        field: category
+        pattern: "Luka Diabetes"
+      - label: "Tips Perawatan"
+        field: category
+        pattern: "Tips Perawatan"
+    view_groups:
+      - label: "Kategori"
+        field: category
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Category", name: "category", widget: "string", hint: "Contoh: Edukasi HOCl, Luka Diabetes" }
-      - { label: "Emoji Icon", name: "icon", widget: "string", hint: "Contoh: 🦠, 🏥, 💧" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - label: "Judul Artikel"
+        name: "title"
+        widget: "string"
+        hint: "Judul yang SEO-friendly, maks 60 karakter"
+        pattern: [".{10,80}", "Judul harus 10-80 karakter"]
 
+      - label: "Deskripsi / Excerpt"
+        name: "description"
+        widget: "text"
+        hint: "Ringkasan untuk meta description & card preview (maks 160 karakter)"
+        pattern: [".{20,200}", "Deskripsi harus 20-200 karakter"]
+
+      - label: "Kategori"
+        name: "category"
+        widget: "select"
+        options:
+          - "Edukasi HOCl"
+          - "Luka Diabetes"
+          - "Tips Perawatan"
+          - "Produk & Inovasi"
+          - "Berita"
+        hint: "Pilih satu kategori utama"
+
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+        hint: "Tag tambahan, pisahkan dengan koma"
+
+      - label: "Emoji Icon"
+        name: "icon"
+        widget: "string"
+        hint: "Contoh: 🦠, 🏥, 💧"
+        default: "📄"
+
+      - label: "Gambar Utama"
+        name: "featured_image"
+        widget: "image"
+        required: false
+        hint: "Gambar hero/thumbnail (rasio 16:9 disarankan)"
+        media_folder: "/src/images/uploads/articles"
+        public_folder: "/images/uploads/articles"
+
+      - label: "Penulis"
+        name: "author"
+        widget: "string"
+        default: "Tim Probiogel"
+
+      - label: "Tanggal Terbit"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DDTHH:mm:ssZ"
+        date_format: "DD/MM/YYYY"
+        time_format: "HH:mm"
+
+      - label: "Isi Artikel"
+        name: "body"
+        widget: "markdown"
+        editor_components: ["image", "code-block"]
+
+  # ═══════════════════════════════════════════════════════════
+  # FAQ (Folder Collection — Markdown files)
+  # ═══════════════════════════════════════════════════════════
+  - name: "faq"
+    label: "❓ FAQ"
+    label_singular: "FAQ"
+    folder: "src/faq"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    summary: "{{question}}"
+    sortable_fields: ["order", "question"]
+    fields:
+      - label: "Pertanyaan"
+        name: "question"
+        widget: "string"
+
+      - label: "Jawaban"
+        name: "body"
+        widget: "markdown"
+
+      - label: "Kategori"
+        name: "category"
+        widget: "select"
+        options:
+          - "Produk"
+          - "Penggunaan"
+          - "Pengiriman"
+          - "Keamanan"
+        default: "Produk"
+
+      - label: "Urutan"
+        name: "order"
+        widget: "number"
+        default: 100
+        hint: "Angka kecil = tampil lebih atas"
+
+  # ═══════════════════════════════════════════════════════════
+  # PENGATURAN & DATA (File Collection — JSON files)
+  # ═══════════════════════════════════════════════════════════
   - name: "settings"
-    label: "Pengaturan & Data"
+    label: "⚙️ Pengaturan & Data"
+    description: "Kelola pengaturan situs, produk, testimoni, dan data lainnya"
     files:
+
+      # ─── Pengaturan Situs ──────────────────────────────────
       - name: "site"
-        label: "Pengaturan Situs"
+        label: "🌐 Pengaturan Situs"
         file: "src/_data/site.json"
-        description: "Pengaturan umum website"
+        description: "Pengaturan umum, kontak, dan SEO"
         fields:
-          - { name: "name", label: "Nama Situs", widget: "string" }
-          - { name: "tagline", label: "Tagline", widget: "string" }
-          - { name: "description", label: "Deskripsi", widget: "text" }
-          - { name: "address", label: "Alamat", widget: "text" }
-          - { name: "bpom", label: "No. BPOM", widget: "string" }
-          - { name: "company", label: "Nama Perusahaan", widget: "string" }
-          - { name: "whatsapp", label: "No. WhatsApp (tanpa +)", widget: "string", required: false }
-          - { name: "instagram", label: "URL Instagram", widget: "string", required: false }
-          - { name: "tiktok", label: "URL TikTok", widget: "string", required: false }
-          - { name: "shopee", label: "URL Shopee", widget: "string", required: false }
-          - { name: "email", label: "Email", widget: "string", required: false }
+          - label: "Nama Situs"
+            name: "name"
+            widget: "string"
 
-      - name: "testimonials"
-        label: "Testimoni"
-        file: "src/_data/testimonials.json"
-        description: "Kelola testimoni pengguna"
-        fields:
-          - name: "items"
-            label: "Daftar Testimoni"
-            widget: "list"
+          - label: "Tagline"
+            name: "tagline"
+            widget: "string"
+            hint: "Slogan pendek, contoh: Technology from Japan"
+
+          - label: "Deskripsi SEO"
+            name: "description"
+            widget: "text"
+            hint: "Deskripsi meta untuk halaman utama (maks 160 karakter)"
+
+          - label: "URL Situs"
+            name: "url"
+            widget: "string"
+            hint: "URL lengkap, contoh: https://probiogel.id"
+            required: false
+
+          - label: "Logo"
+            name: "logo"
+            widget: "image"
+            required: false
+            hint: "Logo untuk navbar dan favicon"
+
+          - label: "Alamat"
+            name: "address"
+            widget: "text"
+
+          - label: "No. BPOM"
+            name: "bpom"
+            widget: "string"
+
+          - label: "Nama Perusahaan"
+            name: "company"
+            widget: "string"
+
+          - label: "Kontak & Sosial Media"
+            name: "contact"
+            widget: "object"
+            collapsed: true
             fields:
-              - { name: "name", label: "Nama", widget: "string" }
-              - { name: "initials", label: "Inisial", widget: "string" }
-              - { name: "text", label: "Testimoni", widget: "text" }
-              - { name: "meta", label: "Info (profesi, kota)", widget: "string" }
-              - { name: "source", label: "Sumber", widget: "string" }
-              - { name: "rating", label: "Rating (1-5)", widget: "number", min: 1, max: 5 }
+              - { label: "No. WhatsApp (tanpa +)", name: "whatsapp", widget: "string", required: false }
+              - { label: "Email", name: "email", widget: "string", required: false }
+              - { label: "URL Instagram", name: "instagram", widget: "string", required: false }
+              - { label: "URL TikTok", name: "tiktok", widget: "string", required: false }
+              - { label: "URL Shopee", name: "shopee", widget: "string", required: false }
+              - { label: "URL Tokopedia", name: "tokopedia", widget: "string", required: false }
 
-      - name: "wounds"
-        label: "Jenis Luka"
-        file: "src/_data/wounds.json"
-        description: "Kelola jenis luka yang ditampilkan"
-        fields:
-          - name: "items"
-            label: "Daftar Luka"
-            widget: "list"
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            collapsed: true
+            required: false
             fields:
-              - { name: "name", label: "Nama Luka", widget: "string" }
-              - { name: "detail", label: "Detail", widget: "string" }
-              - { name: "icon", label: "Emoji Icon", widget: "string" }
+              - { label: "OG Image (1200×630)", name: "og_image", widget: "image", required: false }
+              - { label: "Keywords", name: "keywords", widget: "string", required: false, hint: "Comma-separated keywords" }
 
+      # ─── Produk ─────────────────────────────────────────────
       - name: "products"
-        label: "Produk"
+        label: "🛒 Produk"
         file: "src/_data/products.json"
-        description: "Kelola data produk"
+        description: "Kelola data produk — nama, harga, fitur, sertifikasi"
         fields:
           - name: "items"
             label: "Daftar Produk"
             widget: "list"
+            summary: "{{fields.name}} — {{fields.price}}"
+            label_singular: "Produk"
             fields:
-              - { name: "name", label: "Nama Produk", widget: "string" }
-              - { name: "subtitle", label: "Subtitle", widget: "string" }
-              - { name: "description", label: "Deskripsi", widget: "text" }
-              - { name: "price", label: "Harga", widget: "string" }
-              - { name: "size", label: "Ukuran", widget: "string" }
-              - { name: "image", label: "Foto Produk", widget: "image", required: false }
+              - { label: "Nama Produk", name: "name", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "string" }
+              - { label: "Deskripsi", name: "description", widget: "text" }
+              - { label: "Harga", name: "price", widget: "string", hint: "Contoh: Rp 125.000" }
+              - { label: "Ukuran", name: "size", widget: "string" }
+              - label: "Foto Produk"
+                name: "image"
+                widget: "image"
+                required: false
+                media_folder: "/src/images/uploads/products"
+                public_folder: "/images/uploads/products"
+              - label: "Badge / Label"
+                name: "badge"
+                widget: "string"
+                required: false
+                hint: "Contoh: Best Seller, Baru, Promo"
+              - label: "Produk Unggulan?"
+                name: "is_popular"
+                widget: "boolean"
+                default: false
+                hint: "Tandai sebagai produk yang di-highlight"
+              - label: "Link Pembelian"
+                name: "buy_url"
+                widget: "string"
+                required: false
+                hint: "Link Shopee / Tokopedia / dll"
               - name: "features"
-                label: "Fitur"
+                label: "Fitur Utama"
                 widget: "list"
+                label_singular: "Fitur"
                 field: { name: "feature", label: "Fitur", widget: "string" }
               - name: "certifications"
                 label: "Sertifikasi"
                 widget: "list"
+                label_singular: "Sertifikasi"
                 field: { name: "cert", label: "Sertifikasi", widget: "string" }
+              - name: "ingredients"
+                label: "Komposisi"
+                widget: "list"
+                required: false
+                label_singular: "Bahan"
+                field: { name: "ingredient", label: "Bahan", widget: "string" }
 
+      # ─── Testimoni ──────────────────────────────────────────
+      - name: "testimonials"
+        label: "⭐ Testimoni"
+        file: "src/_data/testimonials.json"
+        description: "Kelola testimoni pengguna — nama, review, rating"
+        fields:
+          - name: "items"
+            label: "Daftar Testimoni"
+            widget: "list"
+            summary: "{{fields.name}} — ⭐{{fields.rating}}"
+            label_singular: "Testimoni"
+            fields:
+              - { label: "Nama", name: "name", widget: "string" }
+              - { label: "Inisial", name: "initials", widget: "string", hint: "2 huruf, contoh: RS" }
+              - { label: "Foto (opsional)", name: "image", widget: "image", required: false }
+              - { label: "Testimoni", name: "text", widget: "text" }
+              - { label: "Info (profesi, kota)", name: "meta", widget: "string" }
+              - { label: "Sumber", name: "source", widget: "select", options: ["via TikTok Comment", "via Instagram DM", "via Shopee Review", "via Tokopedia Review", "via WhatsApp", "via Google Review", "Langsung"] }
+              - { label: "Rating (1-5)", name: "rating", widget: "number", value_type: "int", min: 1, max: 5, default: 5 }
+              - { label: "Produk", name: "product", widget: "string", required: false, hint: "Nama produk yang direview" }
+              - { label: "Tanggal", name: "date", widget: "datetime", required: false, format: "YYYY-MM-DD" }
+
+      # ─── Jenis Luka ─────────────────────────────────────────
+      - name: "wounds"
+        label: "🩹 Jenis Luka"
+        file: "src/_data/wounds.json"
+        description: "Kelola jenis luka yang ditampilkan di landing page"
+        fields:
+          - name: "items"
+            label: "Daftar Luka"
+            widget: "list"
+            summary: "{{fields.icon}} {{fields.name}}"
+            label_singular: "Jenis Luka"
+            fields:
+              - { label: "Nama Luka", name: "name", widget: "string" }
+              - { label: "Detail Singkat", name: "detail", widget: "string" }
+              - { label: "Deskripsi Lengkap", name: "description", widget: "text", required: false, hint: "Penjelasan lebih detail untuk halaman khusus" }
+              - { label: "Emoji Icon", name: "icon", widget: "string" }
+              - label: "Tingkat Keparahan"
+                name: "severity"
+                widget: "select"
+                required: false
+                options:
+                  - { label: "Ringan", value: "ringan" }
+                  - { label: "Sedang", value: "sedang" }
+                  - { label: "Berat", value: "berat" }
+
+      # ─── Pengaturan Formulir ─────────────────────────────────
       - name: "form_options"
-        label: "Pengaturan Formulir"
+        label: "📋 Pengaturan Formulir"
         file: "src/_data/formOptions.json"
         description: "Kelola pilihan dropdown pada formulir konsultasi"
         fields:
           - name: "wound_types"
             label: "Pilihan Jenis Luka"
             widget: "list"
+            label_singular: "Jenis Luka"
             field: { name: "type", label: "Jenis Luka", widget: "string" }
+
           - name: "durations"
-            label: "Pilihan Durasi"
+            label: "Pilihan Durasi Luka"
             widget: "list"
+            label_singular: "Durasi"
             field: { name: "duration", label: "Durasi", widget: "string" }
+
+          - name: "severity_levels"
+            label: "Tingkat Keparahan"
+            widget: "list"
+            required: false
+            label_singular: "Level"
+            field: { name: "level", label: "Level", widget: "string" }
