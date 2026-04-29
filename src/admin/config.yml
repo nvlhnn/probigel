@@ -12,9 +12,6 @@ backend:
   # Squash merge keeps git history clean
   squash_merges: true
 
-# Editorial workflow: content goes through draft → review → publish
-publish_mode: editorial_workflow
-
 # Indonesian locale for CMS UI labels
 locale: id
 
